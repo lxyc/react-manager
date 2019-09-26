@@ -134,6 +134,8 @@
 
 ## 二、集成less
 
+**Ant 官网使用的是不更改源配置文件的方式集成less** https://ant.design/docs/react/use-with-create-react-app-cn
+
 > create-react-app 脚手架中已经添加了 sass-loader 的支持，所以只需要安装 node-sass 插件即可，但是脚手架中并没有配置关于 less 文件的解析，所以我们需要自己进行配置
 
 - 在命令行运行 `npm run eject` 命令
