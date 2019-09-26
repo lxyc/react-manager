@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Child from './Child'
 import ChildAnother from './ChildAnother'
+import { Button } from 'antd'
 import './index.less'
 
 export default class Life extends Component {
@@ -60,8 +61,8 @@ export default class Life extends Component {
     return (
       <div className="life">
         <h2>React 声明周期介绍</h2>
-        <button onClick={this.handleIncrease.bind(this)}>Increase</button>
-        <button onClick={this.handleDecrease.bind(this)}>Decrease</button>
+        <Button type="primary" onClick={this.handleIncrease.bind(this)}>Increase</Button>
+        <Button type="primary" onClick={this.handleDecrease.bind(this)}>Decrease</Button>
         <p>{this.state.count}</p>
         <Child />
         <ChildAnother />
