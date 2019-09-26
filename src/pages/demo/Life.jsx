@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Child from './Child'
 import ChildAnother from './ChildAnother'
+import './index.css'
 
 export default class Life extends Component {
   constructor() {
@@ -57,7 +58,7 @@ export default class Life extends Component {
   render() {
     console.log('--parent-render--')
     return (
-      <div>
+      <div className="life">
         <h2>React 声明周期介绍</h2>
         <button onClick={this.handleIncrease.bind(this)}>Increase</button>
         <button onClick={this.handleDecrease.bind(this)}>Decrease</button>
