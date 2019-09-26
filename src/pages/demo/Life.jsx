@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Child from './Child'
+import ChildAnother from './ChildAnother'
 
 export default class Life extends Component {
   constructor() {
@@ -37,8 +38,8 @@ export default class Life extends Component {
     console.log('--parent-componentDidUpdate--')
   }
 
-  componentWilUnmount() {
-    console.log('--parent-componentWilUnmount--')
+  componentWillUnmount() {
+    console.log('--parent-componentWillUnmount--')
   }
 
   handleIncrease() {
@@ -61,7 +62,8 @@ export default class Life extends Component {
         <button onClick={this.handleIncrease.bind(this)}>Increase</button>
         <button onClick={this.handleDecrease.bind(this)}>Decrease</button>
         <p>{this.state.count}</p>
-        <Child name="xyc" />
+        <Child />
+        <ChildAnother />
       </div>
     )
   }
