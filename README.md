@@ -131,3 +131,55 @@
 1. `[parent] componentWillUnmount()`
 2. `--[child1] componentWillUnmount()`
 3. `--[child2] componentWillUnmount()`
+
+## 二、集成less
+
+> create-react-app 脚手架中已经添加了 sass-loader 的支持，所以只需要安装 node-sass 插件即可，但是脚手架中并没有配置关于 less 文件的解析，所以我们需要自己进行配置
+
+- 在命令行运行 `npm run eject` 命令
+  
+  > 此命令会将脚手架中隐藏的配置都展示出来，此过程不可逆
+
+- 运行完成之后，打开 config 目录下的 webpack.config.js 文件，找到 // style files regexes 注释位置，仿照其解析 sass 的规则，在下面添加两行代码
+
+  ```javascript
+  // 添加 less 解析规则
+  const lessRegex = /\.less$/;
+  const lessModuleRegex = /\.module\.less$/;
+  ```
+
+- 找到 rules 属性配置，在其中添加 less 解析配置
+  > !!!注意： 这里有一个需要注意的地方，下面的这些 less 配置规则放在 sass 的解析规则下面即可，如果放在了 file-loader 的解析规则下面，less 文件解析不会生效。
+
+  ```javascript
+  // Less 解析配置
+  {
+      test: lessRegex,
+      exclude: lessModuleRegex,
+      use: getStyleLoaders(
+          {
+              importLoaders: 2,
+              sourceMap: isEnvProduction && shouldUseSourceMap,
+          },
+          'less-loader'
+      ),
+      sideEffects: true,
+  },
+  {
+      test: lessModuleRegex,
+      use: getStyleLoaders(
+          {
+              importLoaders: 2,
+              sourceMap: isEnvProduction && shouldUseSourceMap,
+              modules: true,
+              getLocalIdent: getCSSModuleLocalIdent,
+          },
+          'less-loader'
+      )
+  },
+  ```
+- 此时配置完成，安装 less 和 less-loader 插件即可
+  ```shell
+  $ npm install less less-loader --save
+  ```
+

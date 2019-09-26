@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Child from './Child'
 import ChildAnother from './ChildAnother'
-import './index.css'
+import './index.less'
 
 export default class Life extends Component {
   constructor() {
