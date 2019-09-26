@@ -79,7 +79,7 @@ module.exports = function(webpackEnv) {
   const env = getClientEnvironment(publicUrl);
 
   // common function to get style loaders
-  const getStyleLoaders = (cssOptions, preProcessor) => {
+  const getStyleLoaders = (cssOptions, preProcessor, preProcessorOptions) => {
     const loaders = [
       isEnvDevelopment && require.resolve('style-loader'),
       isEnvProduction && {
@@ -128,6 +128,7 @@ module.exports = function(webpackEnv) {
           loader: require.resolve(preProcessor),
           options: {
             sourceMap: true,
+            ...preProcessorOptions
           },
         }
       );
@@ -384,7 +385,7 @@ module.exports = function(webpackEnv) {
                     'import', {
                       libraryName: 'antd',
                       libraryDirectory: 'es',
-                      style: 'css',
+                      style: true,
                     }
                   ]
                 ],
@@ -495,9 +496,15 @@ module.exports = function(webpackEnv) {
               use: getStyleLoaders(
                   {
                       importLoaders: 2,
-                      sourceMap: isEnvProduction && shouldUseSourceMap,
+                      sourceMap: isEnvProduction && shouldUseSourceMap
                   },
-                  'less-loader'
+                  'less-loader',
+                  {
+                    javascriptEnabled: true,
+                    modifyVars: {
+                      '@primary-color': '#1DA57A'
+                    }
+                  }
               ),
               sideEffects: true,
             },
@@ -510,7 +517,13 @@ module.exports = function(webpackEnv) {
                       modules: true,
                       getLocalIdent: getCSSModuleLocalIdent,
                   },
-                  'less-loader'
+                  'less-loader',
+                  {
+                    javascriptEnabled: true,
+                    modifyVars: {
+                      '@primary-color': '#1DA57A'
+                    }
+                  }
               )
             },
             // "file" loader makes sure those assets get served by WebpackDevServer.

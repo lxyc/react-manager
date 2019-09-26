@@ -132,7 +132,9 @@
 2. `--[child1] componentWillUnmount()`
 3. `--[child2] componentWillUnmount()`
 
-## 二、集成less
+## 二、集成less & 更改主题
+
+### 2.1 集成less
 
 **Ant 官网使用的是不更改源配置文件的方式集成less** https://ant.design/docs/react/use-with-create-react-app-cn
 
@@ -185,3 +187,25 @@
   $ npm install less less-loader --save
   ```
 
+### 2.2 更改主题
+
+- 下载 `babel-plugin-import` 在配置中 `babel-loader` 处添加如下：
+  ```javascript
+  [
+    'import', {
+      libraryName: 'antd',
+      libraryDirectory: 'es', // default: lib
+      style: true, // true = LESS/Sass, css = css
+    }
+  ]
+  ```
+- `less-loader` options 如下
+  ```javascript
+  {
+    javascriptEnabled: true, // 必须
+    modifyVars: {
+      '@primary-color': '#1DA57A'
+    }
+  }
+  ```
+  > !!!注意：此处有坑！`webpack/config.js/getStyleLoaders()`方法添加的属性是针对`css-loader`添加的，所以扩展属性时会报错，因为属性不合适。解决办法是扩展`getStyleLoaders()`参数，针对当前 loader 添加属性
