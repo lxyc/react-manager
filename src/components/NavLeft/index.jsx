@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import menuConfig from '../../config/menuConfig'
 import './index.less'
 
 class NavLeft extends Component {
