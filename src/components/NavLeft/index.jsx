@@ -40,7 +40,7 @@ class NavLeft extends Component {
         <div className="logo">
           <h1>REACT MS</h1>
         </div>
-        <Menu
+        <Menu className="menu-wrapper"
           mode="inline"
           theme="dark"
           openKeys={this.state.openKeys}

@@ -9,7 +9,7 @@ class ComponentLayout extends Component {
     const { sider, header, content, footer } = this.props
     return (
       <Layout className="layout">
-        <Sider className="sider">{sider}</Sider>
+        <Sider className="sider" width="256">{sider}</Sider>
         <Layout className="main">
           <Header className="header">{header}</Header>
           <Content className="content">{content}</Content>
