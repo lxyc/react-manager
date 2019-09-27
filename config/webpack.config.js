@@ -502,7 +502,7 @@ module.exports = function(webpackEnv) {
                   {
                     javascriptEnabled: true,
                     modifyVars: {
-                      '@primary-color': '#1DA57A'
+                      '@primary-color': '#f9c700'
                     }
                   }
               ),
@@ -521,7 +521,7 @@ module.exports = function(webpackEnv) {
                   {
                     javascriptEnabled: true,
                     modifyVars: {
-                      '@primary-color': '#1DA57A'
+                      '@primary-color': '#f9c700'
                     }
                   }
               )
