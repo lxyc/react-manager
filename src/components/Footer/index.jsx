@@ -3,7 +3,11 @@ import './index.less'
 
 class Footer extends Component {
   render() {
-    return <h2>Footer</h2>
+    return (
+      <div className="component-footer">
+        Copyright &copy; 2019 xyc's react manager system
+      </div>
+    )
   }
 }
 

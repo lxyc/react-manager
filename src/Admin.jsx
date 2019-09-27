@@ -4,6 +4,7 @@ import Layout from './components/Layout'
 import Footer from './components/Footer'
 import Header from './components/Header'
 import NavLeft from './components/NavLeft'
+import Home from './pages/Home'
 import './styles/common.less'
 
 class Admin extends Component {
@@ -11,7 +12,7 @@ class Admin extends Component {
     const layoutProps = {
       sider: <NavLeft />,
       header: <Header />,
-      content: 'content',
+      content: <Home />,
       footer: <Footer />
     }
     return (
