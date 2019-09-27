@@ -210,3 +210,21 @@
   ```
   > !!!注意：此处有坑！`webpack/config.js/getStyleLoaders()`方法添加的属性是针对`css-loader`添加的，所以扩展属性时会报错，因为属性不合适。解决办法是扩展`getStyleLoaders()`参数，针对当前 loader 添加属性
 
+## 三、设置代理
+
+1. `npm install http-proxy-middleware`
+2. src文件夹根目录下创建 setupProxy.js 文件
+3. 添加如下信息(根据实际情况配置)
+  ```javascript
+  const proxy = require('http-proxy-middleware')
+
+  module.exports = function(app) {
+    app.use(
+      proxy('/weather', {
+        target: 'https://free-api.heweather.net/s6',
+        secure: false,
+        changeOrigin: true
+      })
+    )
+  }
+  ```
