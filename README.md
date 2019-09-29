@@ -252,7 +252,8 @@
 - `NavLink`/`Link`
     - `Link`: 超链接导航 `<Link to='/'>Home</link>` 或 `<Link to={{ pathname: '/' }}>Home</Link>`
     - `NavLink`: 菜单导航，支持 activeClass
-
+  > **常遇问题**: 跳转外链 `<a href="http://www.baidu.com" target="_blank" rel="noopener noreferrer">baidu</a>` 
+  
 - `Switch`
 
 - `Redirect`
