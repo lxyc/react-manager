@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
 import { Menu } from 'antd'
 import menuConfig from '../../config/menuConfig'
 import './index.less'
@@ -25,7 +26,11 @@ class NavLeft extends Component {
 
   renderMune(menu) {
     if (!menu.children) {
-      return <Item key={menu.key}>{menu.title}</Item>
+      return (
+        <Item key={menu.key}>
+          <NavLink to={menu.key}>{menu.title}</NavLink>
+        </Item>
+      )
     }
     return (
       <SubMenu key={menu.key} title={menu.title}>
@@ -40,7 +45,8 @@ class NavLeft extends Component {
         <div className="logo">
           <h1>REACT MS</h1>
         </div>
-        <Menu className="menu-wrapper"
+        <Menu
+          className="menu-wrapper"
           mode="inline"
           theme="dark"
           openKeys={this.state.openKeys}
