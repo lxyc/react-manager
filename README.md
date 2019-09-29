@@ -138,13 +138,13 @@
 
 **Ant 官网使用的是不更改源配置文件的方式集成less** https://ant.design/docs/react/use-with-create-react-app-cn
 
-> create-react-app 脚手架中已经添加了 sass-loader 的支持，所以只需要安装 node-sass 插件即可，但是脚手架中并没有配置关于 less 文件的解析，所以我们需要自己进行配置
+> `create-react-app` 脚手架中已经添加了 `sass-loader` 的支持，所以只需要安装 `node-sass` 插件即可，但是脚手架中并没有配置关于 `less` 文件的解析，所以我们需要自己进行配置
 
 - 在命令行运行 `npm run eject` 命令
   
   > 此命令会将脚手架中隐藏的配置都展示出来，此过程不可逆
 
-- 运行完成之后，打开 config 目录下的 webpack.config.js 文件，找到 // style files regexes 注释位置，仿照其解析 sass 的规则，在下面添加两行代码
+- 运行完成之后，打开 `config` 目录下的 `webpack.config.js` 文件，找到 `// style files regexes` 注释位置，仿照其解析 `sass` 的规则，在下面添加两行代码
 
   ```javascript
   // 添加 less 解析规则
@@ -152,8 +152,8 @@
   const lessModuleRegex = /\.module\.less$/;
   ```
 
-- 找到 rules 属性配置，在其中添加 less 解析配置
-  > !!!注意： 这里有一个需要注意的地方，下面的这些 less 配置规则放在 sass 的解析规则下面即可，如果放在了 file-loader 的解析规则下面，less 文件解析不会生效。
+- 找到 `rules` 属性配置，在其中添加 `less` 解析配置
+  > !!!注意： 这里有一个需要注意的地方，下面的这些 `less` 配置规则放在 `sass` 的解析规则下面即可，如果放在了 `file-loader` 的解析规则下面，`less` 文件解析不会生效。
 
   ```javascript
   // Less 解析配置
@@ -182,7 +182,7 @@
       )
   },
   ```
-- 此时配置完成，安装 less 和 less-loader 插件即可
+- 此时配置完成，安装 `less` 和 `less-loader` 插件即可
   ```shell
   $ npm install less less-loader --save
   ```
@@ -208,12 +208,12 @@
     }
   }
   ```
-  > !!!注意：此处有坑！`webpack/config.js/getStyleLoaders()`方法添加的属性是针对`css-loader`添加的，所以扩展属性时会报错，因为属性不合适。解决办法是扩展`getStyleLoaders()`参数，针对当前 loader 添加属性
+  > !!!注意：此处有坑！`webpack/config.js/getStyleLoaders()`方法添加的属性是针对`css-loader`添加的，所以扩展属性时会报错，因为属性不合适。解决办法是扩展`getStyleLoaders()`参数，针对当前 `loader` 添加属性
 
 ## 三、设置代理
 
 1. `npm install http-proxy-middleware`
-2. src文件夹根目录下创建 setupProxy.js 文件
+2. src文件夹根目录下创建 `setupProxy.js` 文件
 3. 添加如下信息(根据实际情况配置)
   ```javascript
   const proxy = require('http-proxy-middleware')
@@ -228,3 +228,31 @@
     )
   }
   ```
+
+## 四、`react-router`
+
+### 4.1 `react-router` 理解
+
+- 4.0 版本不需要路由配置，一切皆组件
+- `react-router` 提供 `router` 核心 `api，包括` `Router`,`Route`,`Switch` 等
+- `react-router-dom` 基于 `react-router` 实现，加入了在浏览器运行环境下的一些功能，提供 `BrowerRouter`,`HashRouter`,`Route`,`Link`,`NavLink` 等
+- `react-router-native` 基于 `react-router`，类似于 `react-router-dom`，加入了 `react-native` 运行环境下的一些功能
+
+由于 `react-router-dom` 依赖于 `react-router`，所以安装依赖时，仅需安装相应环境下的库即可。即：**基于浏览器环境的开发，仅需安装 `react-router-dom`；基于 `react-native` 环境的开发，仅需安装 `react-router-antive`**
+
+### 4.2 `react-router-dom` 核心用法
+
+- `HashRouter` 和 `BrowserRouter`
+
+  - `BrowserRouter`: http://localhost:3000/admin/buttons 使用 `pushState` 和 `popState` 事件构建路由
+  - `HashRouter`: http://localhost:3000/#/admin/buttons 使用 `window.location.hash` 和 `hashchange` 事件构建路由
+
+  > **常遇问题**: 使用 `BrowserRouter` 配置路由，在开发阶段没有问题，但是上传至服务器，会出现访问不到资源的问题。将 `BrowserRouter` 改成 `HashRouter` 之后，问题解决。或者是通过后台配置代理的方式解决路径问题
+
+- `NavLink`/`Link`
+    - `Link`: 超链接导航 `<Link to='/'>Home</link>` 或 `<Link to={{ pathname: '/' }}>Home</Link>`
+    - `NavLink`: 菜单导航，支持 activeClass
+
+- `Switch`
+
+- `Redirect`
