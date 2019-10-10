@@ -23,7 +23,7 @@ class Buttons extends Component {
 
   render() {
     return (
-      <div className="buttons">
+      <div className="buttons-page">
         <Card className="card" title="基础按钮">
           <Button>Default</Button>
           <Button type="primary">Primary</Button>
