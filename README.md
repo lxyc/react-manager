@@ -7,7 +7,7 @@
 | render                          | 每个class组件必须存在                                                                                        | 纯函数                                  |
 | constructor                     | 不要调用 setState() / 不要将 props 赋值给 state                                                              | 初始化state/事件                        |
 | componentDidMount               | 组件挂载后调用                                                                                               | 操作 DOM 节点 / 网络请求 / 添加订阅     |
-| componentDidUpdate              | 参数(prevProps, precState, snapshot)，在更新后立即调用                                                       | 对比更新前后的 props/state              |
+| componentDidUpdate              | 参数(prevProps, prevState, snapshot)，在更新后立即调用                                                       | 对比更新前后的 props/state              |
 | componentWillUnmount            | 组件卸载前调用                                                                                               | 清除定时器和订阅                        |
 | shouldComponentUpdate           | 用于性能优化，生命周期返回 false 时不执行 render() 和 componentDidUpdate()，但并不会阻止子组件更改时重新渲染 |                                         |
 | static getDerivedStateFromProps | 在render方法之前调用，返回一个对象来更新state，返回null则不更新                                              | 用在 state 的值在任何时候都取决于 props |
@@ -252,8 +252,9 @@
 - `NavLink`/`Link`
     - `Link`: 超链接导航 `<Link to='/'>Home</link>` 或 `<Link to={{ pathname: '/' }}>Home</Link>`
     - `NavLink`: 菜单导航，支持 activeClass
+  
   > **常遇问题**: 跳转外链 `<a href="http://www.baidu.com" target="_blank" rel="noopener noreferrer">baidu</a>` 
   
 - `Switch`
-
-- `Redirect`
+  
+  从上到下依次匹配，有匹配项后不再往下继续匹配
