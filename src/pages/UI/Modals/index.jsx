@@ -93,7 +93,7 @@ class Popup extends Component {
 
   render() {
     return (
-      <div className="popup-page">
+      <div className="ui-page popup-page">
         <Card className="card" title="基础模态框">
           <Button type="primary" onClick={this.handleOpenModal.bind(this, 1)}>
             Open

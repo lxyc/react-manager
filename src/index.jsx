@@ -8,6 +8,8 @@ import Router from './Routes'
 // import RouterParam from './pages/DemoRouter/RouterParam'
 import * as serviceWorker from './serviceWorker';
 
+import './styles/common.less'
+
 ReactDOM.render(<Router />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

@@ -8,6 +8,7 @@ import NoMatch from '../pages/NoMatch'
 import Home from '../pages/Home'
 import Buttons from '../pages/UI/Buttons'
 import Modals from '../pages/UI/Modals'
+import Loadings from '../pages/UI/Loadings'
 
 class Routes extends Component {
   render() {
@@ -23,6 +24,7 @@ class Routes extends Component {
                 <Route path="/home" component={Home}></Route>
                 <Route path="/ui/buttons" component={Buttons} />
                 <Route path="/ui/modals" component={Modals} />
+                <Route path="/ui/loadings" component={Loadings} />
                 <Route component={NoMatch} />
               </Switch>
             </LayoutAdmin>
